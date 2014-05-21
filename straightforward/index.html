@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+        var svgContainer = document.getElementById("svg");
+        var paper = Raphael(svgContainer, 640, 480);
+
+        paper
+          .rect(0, 0, 640, 480, 10)
+          .attr({
+            fill: '#fff',
+            stroke: 'none'
+          });
+
+        var circle = paper
+                      .circle(320, 240, 60)
+                      .attr({
+                        fill: '#223fa3',
+                        stroke: '#000',
+                        'stroke-width': 80,
+                        'stroke-opacity': 0.5
+                      });
+        paper
+          .rect(circle.attr('cx') - 10, circle.attr('cy') - 10, 20, 20)
+          .attr({
+            fill: '#fff',
+            stroke: 'none'
+          });
+
+        $.post(
+          '/svg_catcher',
+          { content: svgContainer.innerHTML }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div id="svg"></div>
+  </body>
+</html>
