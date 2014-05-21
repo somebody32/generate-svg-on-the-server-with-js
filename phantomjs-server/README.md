@@ -6,5 +6,5 @@
 1. Make a request to the server:
 ```
 curl -X POST -d @payload.json \
--H "Content-Type: application/json" localhost:9494 > result.svg`
+-H "Content-Type: application/json" localhost:9494 > result.svg
 ```
